@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/overdev-l/solon-plugins/main/schemas/manifest.schema.json",
+  "title": "Solon Plugin Manifest",
+  "description": "单个 Solon 插件的完整清单。Solon 主仓运行时会再用 zod 做一份等价校验。",
+  "type": "object",
+  "required": ["schema_version", "id", "type", "name", "version", "assets"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Manifest schema 版本，当前固定为 1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,38}[a-z0-9]$",
+      "description": "全局唯一短 ID，小写字母 + 数字 + 连字符，2-40 字符"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["cli", "mcp-server", "skill-pack", "theme", "provider"],
+      "description": "插件类型，决定 Solon 用哪个 handler 加载"
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "description": { "type": "string", "maxLength": 500 },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:[-+].+)?$",
+      "description": "SemVer 版本号"
+    },
+    "author": { "type": "string" },
+    "license": { "type": "string" },
+    "homepage": { "type": "string", "format": "uri" },
+    "icon": { "type": "string", "description": "相对路径，如 icon.svg" },
+    "permissions": {
+      "type": "array",
+      "description": "声明性权限，安装前展示给用户",
+      "items": {
+        "oneOf": [
+          { "type": "string", "enum": ["exec", "keychain", "fs_user_data"] },
+          {
+            "type": "object",
+            "required": ["network"],
+            "properties": {
+              "network": {
+                "type": "array",
+                "items": { "type": "string", "format": "hostname" }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "assets": {
+      "type": "object",
+      "description": "各平台下载产物。键为 <os>-<arch>。",
+      "propertyNames": {
+        "enum": [
+          "darwin-arm64",
+          "darwin-x64",
+          "linux-arm64",
+          "linux-x64",
+          "win32-arm64",
+          "win32-x64"
+        ]
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["url", "sha256", "size"],
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "小写 hex 的 SHA-256"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "归档大小，字节"
+          },
+          "archive": {
+            "type": "string",
+            "enum": ["tar.gz", "zip", "none"],
+            "description": "归档格式，none 表示直接是二进制"
+          },
+          "entry": {
+            "type": "string",
+            "description": "解压后可执行文件的相对路径"
+          }
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "description": "类型相关配置，字段随 type 不同而异",
+      "additionalProperties": true
+    },
+    "skills": {
+      "type": "object",
+      "description": "可选：随插件分发的 AI Agent Skill 集合",
+      "required": ["source"],
+      "properties": {
+        "source": { "type": "string", "enum": ["github", "inline"] },
+        "repo": { "type": "string" },
+        "ref": { "type": "string" },
+        "path": { "type": "string" }
+      }
+    },
+    "post_install": {
+      "type": "object",
+      "description": "安装完成后展示给用户的引导，命令绝不自动执行",
+      "properties": {
+        "message_zh": { "type": "string" },
+        "message_en": { "type": "string" },
+        "suggested_command": { "type": "string" }
+      }
+    },
+    "revoked": {
+      "type": "boolean",
+      "description": "Kill switch：标 true 的版本 Solon 下次启动自动禁用",
+      "default": false
+    }
+  }
+}
