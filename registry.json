@@ -1,5 +1,28 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-04-15T00:00:00Z",
-  "plugins": []
+  "updated_at": "2026-04-15T15:45:00Z",
+  "plugins": [
+    {
+      "id": "rtk",
+      "type": "cli",
+      "name": "RTK - Rust Token Killer",
+      "description": "CLI 代理，压缩 git/docker/cargo/npm 等命令的输出，节省 60-90% LLM token。",
+      "latest_version": "0.34.0",
+      "manifest": "plugins/rtk/manifest.json",
+      "author": "rtk-ai",
+      "license": "MIT",
+      "homepage": "https://github.com/rtk-ai/rtk"
+    },
+    {
+      "id": "lark-cli",
+      "type": "cli",
+      "name": "飞书 CLI (lark-cli)",
+      "description": "飞书官方 CLI，200+ 命令覆盖消息、文档、表格、日历、邮件、任务、会议等业务域。",
+      "latest_version": "1.0.12",
+      "manifest": "plugins/lark-cli/manifest.json",
+      "author": "Lark Suite",
+      "license": "MIT",
+      "homepage": "https://github.com/larksuite/cli"
+    }
+  ]
 }

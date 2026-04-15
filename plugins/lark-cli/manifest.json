@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "schema_version": 1,
+  "id": "lark-cli",
+  "type": "cli",
+  "name": "飞书 CLI (lark-cli)",
+  "description": "飞书官方 CLI，200+ 命令覆盖消息、文档、表格、日历、邮件、任务、会议等业务域，面向人类与 AI Agent。",
+  "version": "1.0.12",
+  "author": "Lark Suite",
+  "license": "MIT",
+  "homepage": "https://github.com/larksuite/cli",
+  "permissions": [
+    "exec",
+    "keychain",
+    {
+      "network": [
+        "open.larksuite.com",
+        "open.feishu.cn",
+        "www.larksuite.com",
+        "www.feishu.cn"
+      ]
+    }
+  ],
+  "assets": {
+    "darwin-arm64": {
+      "url": "https://github.com/larksuite/cli/releases/download/v1.0.12/lark-cli-1.0.12-darwin-arm64.tar.gz",
+      "sha256": "c84bd10c294210c094155d1e08e6d665a4b76f62fd01c9cb5c457691c01ae78c",
+      "size": 5906607,
+      "archive": "tar.gz",
+      "entry": "lark-cli"
+    },
+    "darwin-x64": {
+      "url": "https://github.com/larksuite/cli/releases/download/v1.0.12/lark-cli-1.0.12-darwin-amd64.tar.gz",
+      "sha256": "7f947ade30809613db4cb7d953c01996b0654ee174f2608c5883716a309f4f4d",
+      "size": 6231793,
+      "archive": "tar.gz",
+      "entry": "lark-cli"
+    }
+  },
+  "spec": {
+    "command": "lark",
+    "bash_rewrite": false
+  },
+  "post_install": {
+    "message_zh": "首次使用前需要到飞书开放平台创建自建应用，然后在终端执行 `lark login` 完成 OAuth 登录。",
+    "message_en": "Before first use, create a Lark Suite self-built app, then run `lark login` in a terminal to complete OAuth.",
+    "suggested_command": "lark login"
+  }
+}
