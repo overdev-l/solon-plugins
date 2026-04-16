@@ -38,12 +38,12 @@
     }
   },
   "spec": {
-    "command": "lark",
+    "command": "lark-cli",
     "bash_rewrite": false
   },
   "post_install": {
-    "message_zh": "首次使用前需要到飞书开放平台创建自建应用，然后在终端执行 `lark login` 完成 OAuth 登录。",
-    "message_en": "Before first use, create a Lark Suite self-built app, then run `lark login` in a terminal to complete OAuth.",
-    "suggested_command": "lark login"
+    "message_zh": "首次使用前需要到飞书开放平台创建自建应用，然后在终端执行 `lark-cli auth login` 完成 OAuth 登录。",
+    "message_en": "Before first use, create a Lark Suite self-built app, then run `lark-cli auth login` in a terminal to complete OAuth.",
+    "suggested_command": "lark-cli auth login"
   }
 }
