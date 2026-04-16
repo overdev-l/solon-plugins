@@ -39,7 +39,8 @@
   },
   "spec": {
     "command": "lark-cli",
-    "bash_rewrite": false
+    "bash_rewrite": false,
+    "status_command": "lark-cli auth status"
   },
   "post_install": {
     "message_zh": "首次使用需要创建飞书应用并完成授权。",
