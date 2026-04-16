@@ -42,8 +42,11 @@
     "bash_rewrite": false
   },
   "post_install": {
-    "message_zh": "首次使用前需要到飞书开放平台创建自建应用，然后在终端执行 `lark-cli auth login` 完成 OAuth 登录。",
-    "message_en": "Before first use, create a Lark Suite self-built app, then run `lark-cli auth login` in a terminal to complete OAuth.",
-    "suggested_command": "lark-cli auth login"
+    "message_zh": "首次使用需要创建飞书应用并完成授权。",
+    "message_en": "First-time setup: create a Lark app and complete authorization.",
+    "setup_steps": [
+      { "command": "lark-cli config init --new", "label_zh": "创建飞书应用", "label_en": "Create Lark App" },
+      { "command": "lark-cli auth login", "label_zh": "授权登录", "label_en": "Authorize" }
+    ]
   }
 }
