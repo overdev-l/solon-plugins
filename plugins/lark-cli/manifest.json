@@ -46,7 +46,7 @@
     "message_en": "First-time setup: create a Lark app and complete authorization.",
     "setup_steps": [
       { "command": "lark-cli config init --new", "label_zh": "创建飞书应用", "label_en": "Create Lark App" },
-      { "command": "lark-cli auth login", "label_zh": "授权登录", "label_en": "Authorize" }
+      { "command": "lark-cli auth login --recommend", "label_zh": "授权登录", "label_en": "Authorize" }
     ]
   }
 }
