@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-04-15T15:45:00Z",
+  "updated_at": "2026-04-18T04:00:00Z",
   "plugins": [
     {
       "id": "rtk",
@@ -23,6 +23,17 @@
       "author": "Lark Suite",
       "license": "MIT",
       "homepage": "https://github.com/larksuite/cli"
+    },
+    {
+      "id": "chatgpt-subscription",
+      "type": "provider",
+      "name": "ChatGPT 订阅",
+      "description": "使用 ChatGPT Plus / Pro / Team 订阅作为模型后端，通过 OAuth 登录，无需 API Key。",
+      "latest_version": "0.1.0",
+      "manifest": "plugins/chatgpt-subscription/manifest.json",
+      "author": "overdev-l",
+      "license": "MIT",
+      "homepage": "https://github.com/overdev-l/solon-plugins"
     }
   ]
 }

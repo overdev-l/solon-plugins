@@ -4,8 +4,15 @@
   "title": "Solon Plugin Manifest",
   "description": "单个 Solon 插件的完整清单。Solon 主仓运行时会再用 zod 做一份等价校验。",
   "type": "object",
-  "required": ["schema_version", "id", "type", "name", "version", "assets"],
+  "required": ["schema_version", "id", "type", "name", "version"],
   "additionalProperties": false,
+  "allOf": [
+    {
+      "description": "provider 之外的类型必须提供 assets；provider 纯配置插件可留空。",
+      "if": { "not": { "properties": { "type": { "const": "provider" } } } },
+      "then": { "required": ["assets"] }
+    }
+  ],
   "properties": {
     "schema_version": {
       "type": "integer",

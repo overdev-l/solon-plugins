@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "schema_version": 1,
+  "id": "chatgpt-subscription",
+  "type": "provider",
+  "name": "ChatGPT 订阅",
+  "description": "使用 ChatGPT Plus / Pro / Team 订阅作为模型后端，通过 OAuth 登录，无需 API Key。",
+  "version": "0.1.0",
+  "author": "overdev-l",
+  "license": "MIT",
+  "homepage": "https://github.com/overdev-l/solon-plugins",
+  "permissions": [
+    "keychain",
+    { "network": ["auth.openai.com", "chatgpt.com"] }
+  ],
+  "spec": {
+    "sdk": "openai",
+    "base_url": "https://chatgpt.com/backend-api/codex",
+    "api_format": "openai-responses",
+    "auth": {
+      "type": "oauth_pkce",
+      "authorize_url": "https://auth.openai.com/oauth/authorize",
+      "token_url": "https://auth.openai.com/oauth/token",
+      "client_id": "app_EMoamEEZ73f0CkXaXp7hrann",
+      "scopes": ["openid", "profile", "email", "offline_access"],
+      "redirect_port": 1455,
+      "redirect_path": "/auth/callback",
+      "extra_authorize_params": {
+        "id_token_add_organizations": "true",
+        "codex_cli_simplified_flow": "true"
+      },
+      "account_id_claim": "https://api.openai.com/auth/chatgpt_account_id"
+    },
+    "request_headers": {
+      "chatgpt-account-id": "$ACCOUNT_ID",
+      "originator": "solon_workbench",
+      "OpenAI-Beta": "responses=experimental"
+    },
+    "models": [
+      { "id": "gpt-5", "name": "GPT-5" },
+      { "id": "gpt-5-mini", "name": "GPT-5 mini" },
+      { "id": "gpt-4.1", "name": "GPT-4.1" },
+      { "id": "o3", "name": "o3" },
+      { "id": "o4-mini", "name": "o4-mini" }
+    ]
+  },
+  "post_install": {
+    "message_zh": "打开设置 → AI Provider → 插件接入 → ChatGPT 订阅，点击「打开浏览器登录」完成授权即可使用。",
+    "message_en": "Open Settings → AI Provider → Plugins → ChatGPT Subscription and click \"Sign in in browser\" to authorize."
+  }
+}
