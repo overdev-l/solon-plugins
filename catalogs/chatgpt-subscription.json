@@ -1,0 +1,30 @@
+{
+  "$comment": "按 ChatGPT 订阅层级分桶 — Solon 按 JWT claim chatgpt_plan_type 取对应 bucket。参考 CLIProxyAPI 的 models.json 命名。",
+  "codex-free": [
+    { "id": "gpt-5", "name": "GPT-5" },
+    { "id": "gpt-5-mini", "name": "GPT-5 mini" },
+    { "id": "gpt-4.1", "name": "GPT-4.1" }
+  ],
+  "codex-plus": [
+    { "id": "gpt-5", "name": "GPT-5" },
+    { "id": "gpt-5-mini", "name": "GPT-5 mini" },
+    { "id": "gpt-4.1", "name": "GPT-4.1" },
+    { "id": "o3", "name": "o3" },
+    { "id": "o4-mini", "name": "o4-mini" }
+  ],
+  "codex-pro": [
+    { "id": "gpt-5", "name": "GPT-5" },
+    { "id": "gpt-5-mini", "name": "GPT-5 mini" },
+    { "id": "gpt-4.1", "name": "GPT-4.1" },
+    { "id": "o3", "name": "o3" },
+    { "id": "o4-mini", "name": "o4-mini" },
+    { "id": "gpt-5-codex", "name": "GPT-5 Codex" }
+  ],
+  "codex-team": [
+    { "id": "gpt-5", "name": "GPT-5" },
+    { "id": "gpt-5-mini", "name": "GPT-5 mini" },
+    { "id": "gpt-4.1", "name": "GPT-4.1" },
+    { "id": "o3", "name": "o3" },
+    { "id": "o4-mini", "name": "o4-mini" }
+  ]
+}

@@ -45,6 +45,17 @@
       { "id": "o3", "name": "o3" },
       { "id": "o4-mini", "name": "o4-mini" }
     ],
+    "models_endpoint": {
+      "url": "https://raw.githubusercontent.com/overdev-l/solon-plugins/main/catalogs/chatgpt-subscription.json",
+      "method": "GET",
+      "use_auth": false,
+      "plan_type_claim": "https://api.openai.com/auth.chatgpt_plan_type",
+      "plan_type_bucket_prefix": "codex-",
+      "default_bucket": "codex-free",
+      "id_field": "id",
+      "name_field": "name",
+      "cache_ttl_seconds": 10800
+    },
     "runtime_hooks": {
       "on_response": {
         "extract": [
