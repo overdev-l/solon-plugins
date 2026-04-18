@@ -5,7 +5,7 @@
   "type": "provider",
   "name": "ChatGPT 订阅",
   "description": "使用 ChatGPT Plus / Pro / Team 订阅作为模型后端，通过 OAuth 登录，无需 API Key。",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "overdev-l",
   "license": "MIT",
   "homepage": "https://github.com/overdev-l/solon-plugins",
@@ -44,6 +44,56 @@
       { "id": "gpt-4.1", "name": "GPT-4.1" },
       { "id": "o3", "name": "o3" },
       { "id": "o4-mini", "name": "o4-mini" }
+    ],
+    "runtime_hooks": {
+      "on_response": {
+        "extract": [
+          {
+            "id": "rate_limit_5h",
+            "from": "response_headers",
+            "fields": {
+              "used_percent": "x-codex-primary-used-percent",
+              "window_minutes": "x-codex-primary-window-minutes",
+              "resets_at": "x-codex-primary-reset-at"
+            }
+          },
+          {
+            "id": "rate_limit_week",
+            "from": "response_headers",
+            "fields": {
+              "used_percent": "x-codex-secondary-used-percent",
+              "window_minutes": "x-codex-secondary-window-minutes",
+              "resets_at": "x-codex-secondary-reset-at"
+            }
+          }
+        ]
+      }
+    },
+    "status_panels": [
+      {
+        "type": "progress_bar_list",
+        "title": { "zh": "订阅额度", "en": "Subscription usage" },
+        "bars": [
+          {
+            "source": "rate_limit_5h",
+            "label": { "zh": "5 小时窗口", "en": "5-hour window" },
+            "percent_field": "used_percent",
+            "subtitle_field": "window_minutes",
+            "subtitle_format": "duration_minutes",
+            "footer_field": "resets_at",
+            "footer_format": "relative_time"
+          },
+          {
+            "source": "rate_limit_week",
+            "label": { "zh": "每周窗口", "en": "Weekly window" },
+            "percent_field": "used_percent",
+            "subtitle_field": "window_minutes",
+            "subtitle_format": "duration_minutes",
+            "footer_field": "resets_at",
+            "footer_format": "relative_time"
+          }
+        ]
+      }
     ]
   },
   "post_install": {
