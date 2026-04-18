@@ -5,7 +5,7 @@
   "type": "provider",
   "name": "ChatGPT 订阅",
   "description": "使用 ChatGPT Plus / Pro / Team 订阅作为模型后端，通过 OAuth 登录，无需 API Key。",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "overdev-l",
   "license": "MIT",
   "homepage": "https://github.com/overdev-l/solon-plugins",
@@ -22,19 +22,21 @@
       "authorize_url": "https://auth.openai.com/oauth/authorize",
       "token_url": "https://auth.openai.com/oauth/token",
       "client_id": "app_EMoamEEZ73f0CkXaXp7hrann",
-      "scopes": ["openid", "profile", "email", "offline_access"],
+      "scopes": ["openid", "email", "profile", "offline_access"],
       "redirect_port": 1455,
       "redirect_path": "/auth/callback",
       "extra_authorize_params": {
+        "prompt": "login",
         "id_token_add_organizations": "true",
         "codex_cli_simplified_flow": "true"
       },
       "account_id_claim": "https://api.openai.com/auth/chatgpt_account_id"
     },
     "request_headers": {
-      "chatgpt-account-id": "$ACCOUNT_ID",
-      "originator": "solon_workbench",
-      "OpenAI-Beta": "responses=experimental"
+      "Chatgpt-Account-Id": "$ACCOUNT_ID",
+      "Originator": "codex-tui",
+      "User-Agent": "codex-tui/0.118.0 (Mac OS 26.3.1; arm64) iTerm.app/3.6.9 (codex-tui; 0.118.0)",
+      "Session_id": "$SESSION_ID"
     },
     "models": [
       { "id": "gpt-5", "name": "GPT-5" },
