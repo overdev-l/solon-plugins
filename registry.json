@@ -1,7 +1,18 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-04-18T06:00:00Z",
+  "updated_at": "2026-04-19T08:30:00Z",
   "plugins": [
+    {
+      "id": "wecom-cli",
+      "type": "cli",
+      "name": "企业微信 CLI (wecom-cli)",
+      "description": "企业微信官方 CLI,覆盖文档、智能表格、待办、通讯录、消息、日程、会议。扫码登录后 Agent 可直接操作。⚠️ 官方当前仅对 ≤ 10 人企业开放。",
+      "latest_version": "0.1.5",
+      "manifest": "plugins/wecom-cli/manifest.json",
+      "author": "WeCom Team",
+      "license": "MIT",
+      "homepage": "https://github.com/WeComTeam/wecom-cli"
+    },
     {
       "id": "rtk",
       "type": "cli",

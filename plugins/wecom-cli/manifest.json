@@ -1,0 +1,73 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "schema_version": 1,
+  "id": "wecom-cli",
+  "type": "cli",
+  "name": "企业微信 CLI (wecom-cli)",
+  "description": "企业微信官方 CLI。扫码登录后 Agent 可直接操作文档、智能表格、待办、通讯录、消息、日程、会议。⚠️ 官方当前仅对 ≤ 10 人企业开放。",
+  "version": "0.1.5",
+  "author": "WeCom Team",
+  "license": "MIT",
+  "homepage": "https://github.com/WeComTeam/wecom-cli",
+  "permissions": [
+    "exec",
+    {
+      "network": [
+        "qyapi.weixin.qq.com",
+        "registry.npmjs.org"
+      ]
+    }
+  ],
+  "assets": {
+    "darwin-arm64": {
+      "url": "https://registry.npmjs.org/@wecom/cli-darwin-arm64/-/cli-darwin-arm64-0.1.5.tgz",
+      "sha256": "97dbe99627e8cad23a5e5dee7cdb5d9f7a10c1b0eb1b4590377d7b71a99591db",
+      "size": 3795185,
+      "archive": "tar.gz",
+      "entry": "package/bin/wecom-cli"
+    },
+    "darwin-x64": {
+      "url": "https://registry.npmjs.org/@wecom/cli-darwin-x64/-/cli-darwin-x64-0.1.5.tgz",
+      "sha256": "724c352e54fbdf44b057780006fead2fd936184efb878f87e25255fa0aff36eb",
+      "size": 4069988,
+      "archive": "tar.gz",
+      "entry": "package/bin/wecom-cli"
+    },
+    "linux-arm64": {
+      "url": "https://registry.npmjs.org/@wecom/cli-linux-arm64/-/cli-linux-arm64-0.1.5.tgz",
+      "sha256": "924aa7fed9615822b00ca80e666e1abd7e8f30754644079ee8d737e61545220c",
+      "size": 4009491,
+      "archive": "tar.gz",
+      "entry": "package/bin/wecom-cli"
+    },
+    "linux-x64": {
+      "url": "https://registry.npmjs.org/@wecom/cli-linux-x64/-/cli-linux-x64-0.1.5.tgz",
+      "sha256": "be8816060ce95ead1e657c1d4cee79737838d6748c3bfa2af1cbd7dd003c8f02",
+      "size": 4257134,
+      "archive": "tar.gz",
+      "entry": "package/bin/wecom-cli"
+    },
+    "win32-x64": {
+      "url": "https://registry.npmjs.org/@wecom/cli-win32-x64/-/cli-win32-x64-0.1.5.tgz",
+      "sha256": "2ba09f1dcff6afc08882c01f61a4ccbe886936c16d9d9fc5cbf20a8dc094eb07",
+      "size": 3213060,
+      "archive": "tar.gz",
+      "entry": "package/bin/wecom-cli.exe"
+    }
+  },
+  "spec": {
+    "command": "wecom-cli",
+    "bash_rewrite": false
+  },
+  "post_install": {
+    "message_zh": "首次使用需要用企业微信扫码登录以授权 CLI。点击下方按钮,Solon 会跑 `wecom-cli init` 并把扫码 URL 在浏览器里打开,扫码完成后 Agent 就能直接操作文档 / 表格 / 待办。",
+    "message_en": "First-time setup: scan the QR code with WeCom to authorize the CLI.",
+    "setup_steps": [
+      {
+        "command": "wecom-cli init",
+        "label_zh": "扫码授权",
+        "label_en": "Scan QR to authorize"
+      }
+    ]
+  }
+}
