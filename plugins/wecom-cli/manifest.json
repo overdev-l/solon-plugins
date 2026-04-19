@@ -57,7 +57,8 @@
   },
   "spec": {
     "command": "wecom-cli",
-    "bash_rewrite": false
+    "bash_rewrite": false,
+    "skills_dir": "skills"
   },
   "post_install": {
     "message_zh": "首次使用需要用企业微信扫码登录以授权 CLI。点击下方按钮,Solon 会跑 `wecom-cli init` 并把扫码 URL 在浏览器里打开,扫码完成后 Agent 就能直接操作文档 / 表格 / 待办。",
